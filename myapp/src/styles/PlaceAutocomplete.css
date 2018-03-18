@@ -28,7 +28,14 @@ html{
  
 }
 
-.inputMaterial:focus 		{ outline:none;}
+.inputMaterial:focus 		{
+  outline: none; 
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: url('../images/ic_work_black.png');
+  background-size: 15px 15px;
+
+}
 
 /* LABEL ======================================= */
 

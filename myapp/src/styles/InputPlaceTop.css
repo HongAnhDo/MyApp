@@ -21,7 +21,6 @@ input {
   border-style:hidden;
   margin-top: 115px;
 }
-
 .Demo__search-input {
   border-style:hidden;
   outline: none;
@@ -39,7 +38,7 @@ input {
   
 }
 .Demo__dropdown-footer-image{
- width: 40%;
+ width: 30%;
  height: 20px;
  margin-right: 10px;
 }
