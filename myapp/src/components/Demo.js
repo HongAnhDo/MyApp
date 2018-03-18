@@ -13,7 +13,7 @@ import ic_done from '../images/ic_done.png';
 class AppBarExampleIcon extends Component {
     render() {
         return (
-            <div>
+            <div >
                 <div style={{ backgroundColor: blue500, height: '45px', width: '100%', position: 'relative', textAlign: 'center', display: 'table' }}>
                     <img style={{ width: '25px', marginLeft: '15px', paddingTop: '10px', height: 'auto', float: 'left', display: 'block-inline' }} src={ic_back} />
 
@@ -27,7 +27,7 @@ class AppBarExampleIcon extends Component {
                     </div>
                 </div>
 
-                <div style = {{ backgroundColor:'red', height: '300px', margin:'10px', width: '100%', position: 'relative', textAlign: 'center', display: 'table', paddingTop: '20px'}}>
+                <div style = {{ backgroundColor:'red', height: '300px', margin:' 2% 2%', width: '96%', textAlign: 'center', display: 'table', paddingTop: '20px'}}>
                 <img style={{ width: '15px', height: 'auto' }} src={ic_done} />
                 <div>DDax guiwr sdsdf</div>
 
