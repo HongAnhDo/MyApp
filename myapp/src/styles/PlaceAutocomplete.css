@@ -5,11 +5,11 @@ html{
   width: 100%;
   background-color: #ffffff;
   font-family: "Roboto";
+  height: 100%;
 }
 .group 			  { 
   position:relative; 
   height: 21px;
-   
   
 }
 

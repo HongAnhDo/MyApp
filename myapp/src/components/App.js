@@ -27,8 +27,8 @@ class App extends Component {
     }
 
     return (
-      <MuiThemeProvider>
-        <div  id = "honganh" style={{ backgroundColor: '#f5f5f5', width: '125%', height: 'auto' }}>
+      <div style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}>
+        <div  id = "honganh" style={{ backgroundColor: '#f5f5f5', width: '100%', height: 'auto' }}>
           <div className="input" style={{ width: '80%', height: '100px', paddingTop: '5px', backgroundColor: '#f5f5f5' }}>
 
             <img style={{ marginTop: '15px', marginRight: '10px', marginLeft: '5px', width: '15%', height: '60px', display: 'inline', position: 'relative', float: 'left', zIndex: '1' }} src={ic_dimension1}></img>
@@ -39,7 +39,7 @@ class App extends Component {
           
           
         </div>
-        <div style = {{ backgroundColor: '#ebebeb', width: '125%', height: '30px' }}>
+        <div style = {{ backgroundColor: '#ebebeb', width: '100%', height: '30px' }}>
           <div style = {{height: '30px', display: 'table',margin: '0 auto ',width: 'auto' }} >
             <i className = "zmdi zmdi-pin" style={{ height: '20px', width: 'auto', marginTop:'6px'}}></i>
             <span style = {{ backgroundColor: '#ebebeb', marginLeft: '5px', fontSize:'13px',fontWeight:'bold' }}>Chọn địa điểm trên bản đồ</span>
@@ -49,7 +49,7 @@ class App extends Component {
 
          
         
-      </MuiThemeProvider>
+      </div>
 
     );
   }

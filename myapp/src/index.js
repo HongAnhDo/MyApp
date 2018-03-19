@@ -7,5 +7,5 @@ import App from './components/App'
 import AppBarExampleIcon from './components/Demo'
 
 
-ReactDOM.render(<AppBarExampleIcon />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
