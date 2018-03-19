@@ -42,13 +42,11 @@ class App extends Component {
         </div>
         <div style={{ backgroundColor: '#ebebeb', width: '100%', height: '30px' }}>
           <div style={{ height: '30px', display: 'table', margin: '0 auto ', width: 'auto' }} >
-            <i className="zmdi zmdi-pin" style={{ height: '20px', width: 'auto', marginTop: '6px' }}></i>
+            <i className= "zmdi zmdi-pin-drop" style={{ height: '20px', width: 'auto', marginTop: '6px' }}></i>
             <span style={{ backgroundColor: '#ebebeb', marginLeft: '5px', fontSize: '13px', fontWeight: 'bold' }}>Chọn địa điểm trên bản đồ</span>
           </div>
 
         </div>
-
-
 
       </div>
 
