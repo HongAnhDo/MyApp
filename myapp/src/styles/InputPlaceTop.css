@@ -28,8 +28,12 @@ input {
   background-color: blue;
 }
 .Demo__suggestion-item {
-  padding: 0px;
   text-align: left;
+  padding: 2px;
+  border-bottom: 1px solid #CCC;
+  border-bottom-width: 70%;
+  margin-left: 2%;
+
 }
 .Demo__dropdown-footer {
   display: block;

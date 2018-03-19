@@ -10,7 +10,6 @@ const renderSuggestion = ({ formattedSuggestion }) => (
     <div style={{ height: '100%', display: 'inline' }}>
       <strong>{formattedSuggestion.mainText}</strong>{' '}
       <small className="text-muted">{formattedSuggestion.secondaryText}</small>
-      <span style={{ backgroundColor: '#ccc', height: '1px', width: '100%', display: 'block' }}></span>
     </div>
   </div>
 );

@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
 
 html{
-  
   width: 100%;
   background-color: #ffffff;
   font-family: "Roboto";
@@ -73,10 +72,10 @@ label 				 {
   -webkit-transition:0.2s ease all;
 }
 .bar:before {
-  left:70%;
+  left:65%;
 }
 .bar:after {
-  right:30%; 
+  right:35%; 
 }
 
 /* active state */
