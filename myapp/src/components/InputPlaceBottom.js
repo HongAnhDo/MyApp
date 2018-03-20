@@ -9,7 +9,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
     <i className="zmdi zmdi-pin" style={{ marginRight: 10, height: '100%', display: 'inline' }}></i>
     <div style={{ height: '100%', display: 'inline' }}>
       <strong>{formattedSuggestion.mainText}</strong>{' '}
-      <small className="text-muted">{formattedSuggestion.secondaryText}</small>
+      <small className="text-muted">{console.log(formattedSuggestion)}</small>
     </div>
   </div>
 );
@@ -51,16 +51,18 @@ class InputPlaceBottom extends Component {
       address: '',
       geocodeResults: null,
       loading: false,
+      idPlace: 0
     };
 
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSelect(address) {
+  handleSelect(address, idPlace) {
     this.setState({
       address,
       loading: true,
+      idPlace: idPlace
     });
 
     geocodeByAddress(address)
@@ -108,6 +110,7 @@ class InputPlaceBottom extends Component {
   }
 
   render() {
+    console.log(this.state.idPlace);
     const inputProps = {
       type: 'text',
       value: this.state.address,

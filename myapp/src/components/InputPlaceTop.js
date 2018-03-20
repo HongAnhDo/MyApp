@@ -49,6 +49,7 @@ class InputPlaceTop extends Component {
       address: '',
       geocodeResults: null,
       loading: false,
+      idPlace: 0
     };
 
     this.handleSelect = this.handleSelect.bind(this);
@@ -59,6 +60,7 @@ class InputPlaceTop extends Component {
     this.setState({
       address,
       loading: true,
+      
     });
 
     geocodeByAddress(address)

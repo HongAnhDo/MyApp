@@ -9,8 +9,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import defaultSuggestionItem from './SuggestionItem';
 import defaultStyles from './defaultStyles';
-import TextField from 'material-ui/TextField';
-import { orange500, blue500, grey300, grey500, red100 } from 'material-ui/styles/colors';
+import { orange500, blue500, grey300 } from 'material-ui/styles/colors';
 import '../styles/PlaceAutocomplete.css'
 
 const styles = {
@@ -30,13 +29,11 @@ const styles = {
 
 class PlacesAutocomplete extends Component {
 
-
-
   constructor(props) {
     super(props);
 
     this.state = {
-      addressSe: "",
+      idAddress:"",
       autocompleteItems: [],
       userInputValue: props.inputProps.value,
     };
@@ -75,10 +72,15 @@ class PlacesAutocomplete extends Component {
     }
 
     // transform snake_case to camelCase
-    const formattedSuggestion = structured_formatting => ({
-      mainText: structured_formatting.main_text,
-      secondaryText: structured_formatting.secondary_text,
-    });
+    const formattedSuggestion = structured_formatting => {
+      var secondaryText = structured_formatting.secondary_text;
+      var n = secondaryText.length;
+      var str = secondaryText.substring(0, n - 10);
+      return ({
+        mainText: structured_formatting.main_text,
+        secondaryText: str,
+      });
+    }
 
     const { highlightFirstSuggestion } = this.props;
 
@@ -125,9 +127,11 @@ class PlacesAutocomplete extends Component {
     }
     this.clearSuggestions();
     this.handleSelect(address, placeId);
-    
-    this.setState({userInputValue: address});
-    console.log(this.state.addressSe);
+
+    this.setState({ 
+      userInputValue: address,
+      idAddress:  placeId
+    });
   }
 
   handleSelect(address, placeId) {
@@ -159,7 +163,8 @@ class PlacesAutocomplete extends Component {
       this.handleEnterKeyWithoutActiveItem();
     } else {
       this.selectAddress(activeItem.suggestion, activeItem.placeId);
-    }
+    };
+    alert(activeItem.placeId);
   }
 
   handleEnterKeyWithoutActiveItem() {
@@ -364,13 +369,13 @@ class PlacesAutocomplete extends Component {
         style={this.inlineStyleFor('root')}
         className={this.classNameFor('root')}
       >
-         <form className="group" {...inputProps}>
-                <input className="inputMaterial" type="text"  required value = {this.state.userInputValue} {...inputProps.onChange}/>
-                <label >{hintTextInput}</label>
-                <div className="bar"></div>
-               
-            </form>
-          
+        <form className="group" {...inputProps}>
+          <input className="inputMaterial" type="text" required value={this.state.userInputValue} {...inputProps.onChange} />
+          <label >{hintTextInput}</label>
+          <div className="bar"></div>
+
+        </form>
+
         {this.shouldRenderDropdown() && (
           <div
             role="listbox"
@@ -455,12 +460,10 @@ PlacesAutocomplete.propTypes = {
   }),
   options: PropTypes.shape({
     bounds: PropTypes.object,
-    componentRestrictions: PropTypes.object,
     location: PropTypes.object,
     offset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     radius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    types: PropTypes.array,
-    componentRestrictions: {country: 'VN'} 
+    types: PropTypes.array
   }),
   debounce: PropTypes.number,
   highlightFirstSuggestion: PropTypes.bool,
@@ -479,7 +482,7 @@ PlacesAutocomplete.defaultProps = {
   classNames: {},
   renderSuggestion: defaultSuggestionItem,
   styles: {},
-  options: {componentRestrictions: {country: 'VN'} },
+  options: { componentRestrictions: { country: 'VN' } },
   debounce: 400,
   highlightFirstSuggestion: false,
   shouldFetchSuggestions: () => true,
