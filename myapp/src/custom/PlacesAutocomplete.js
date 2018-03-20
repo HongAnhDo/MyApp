@@ -460,6 +460,7 @@ PlacesAutocomplete.propTypes = {
     offset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     radius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     types: PropTypes.array,
+    componentRestrictions: {country: 'VN'} 
   }),
   debounce: PropTypes.number,
   highlightFirstSuggestion: PropTypes.bool,
@@ -478,8 +479,8 @@ PlacesAutocomplete.defaultProps = {
   classNames: {},
   renderSuggestion: defaultSuggestionItem,
   styles: {},
-  options: {},
-  debounce: 200,
+  options: {componentRestrictions: {country: 'VN'} },
+  debounce: 400,
   highlightFirstSuggestion: false,
   shouldFetchSuggestions: () => true,
 };

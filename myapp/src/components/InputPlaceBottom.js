@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete'
 import '../styles/InputPlaceBottom.css';
-import '../styles/AppGGPlace.css'
 import PlacesAutocomplete from '../custom/PlacesAutocomplete'
 
 

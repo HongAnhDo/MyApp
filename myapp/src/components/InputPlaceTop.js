@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete'
 import '../styles/InputPlaceTop.css';
-import '../styles/AppGGPlace.css'
 import PlacesAutocomplete from '../custom/PlacesAutocomplete'
 
 const renderSuggestion = ({ formattedSuggestion }) => (
@@ -13,7 +12,6 @@ const renderSuggestion = ({ formattedSuggestion }) => (
     </div>
   </div>
 );
-
 
 const renderFooter = () => (
   <div className="Demo__dropdown-footer">
@@ -32,7 +30,7 @@ const cssClasses = {
   autocompleteContainer: 'Demo__autocomplete-container',
 };
 
-const shouldFetchSuggestions = ({ value }) => value.length > 2;
+const shouldFetchSuggestions = ({ value }) => value.length >= 2;
 
 const onError = (status, clearSuggestions) => {
   /* eslint-disable no-console */
