@@ -42,8 +42,8 @@ input {
   
 }
 .Demo__dropdown-footer-image{
- width: 30%;
- height: 20px;
+ width: auto;
+ height: 30px;
  margin-right: 10px;
 }
 .form-group {
