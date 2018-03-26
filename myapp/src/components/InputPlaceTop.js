@@ -4,12 +4,11 @@ import '../styles/InputPlaceTop.css';
 import PlacesAutocomplete from '../custom/PlacesAutocomplete'
 
 const renderSuggestion = ({ formattedSuggestion }) => (
-  <div className="Demo__suggestion-item-bottom">
-    <div style={{ height: '100%', display: 'inline',  color: "#979797" }}>
-      <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontSize: '14px' }}>
-        <i className="zmdi zmdi-pin" style={{ marginRight: 10, height: '100%', display: 'inline', color: "#979797", fontSize: '16px' }}></i>
-        {formattedSuggestion.address}
-      </div>
+  <div className="Demo__suggestion-item">
+    <i className="zmdi zmdi-pin" style={{ marginRight: 10, height: '100%', display: 'inline' }}></i>
+    <div style={{ height: '100%', display: 'inline' }}>
+      <strong>{formattedSuggestion.mainText}</strong>{' '}
+      <small className="text-muted">{formattedSuggestion.secondaryText}</small>
     </div>
   </div>
 );
@@ -55,7 +54,6 @@ class InputPlaceTop extends Component {
 
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    
   }
 
   handleSelect(address) {
@@ -68,14 +66,16 @@ class InputPlaceTop extends Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(({ lat, lng }) => {
-        console.log('Geocode Success', { lat, lng });
+        console.log('Geocode Success', { lat, lng }); // eslint-disable-line no-console
         this.setState({
+          // geocodeResults: this.renderGeocodeSuccess(lat, lng),
           loading: false,
         });
       })
       .catch(error => {
-        console.log('Geocode Error', error); 
+        console.log('Geocode Error', error); // eslint-disable-line no-console
         this.setState({
+          // geocodeResults: this.renderGeocodeFailure(error),
           loading: false,
         });
       });
@@ -124,7 +124,7 @@ class InputPlaceTop extends Component {
     };
 
     return (
-      <div className="input_place">
+      <div className="m">
         <PlacesAutocomplete
           renderSuggestion={renderSuggestion}
           renderFooter={renderFooter}
@@ -135,7 +135,6 @@ class InputPlaceTop extends Component {
           onError={onError}
           shouldFetchSuggestions={shouldFetchSuggestions}
           hintTextInput={this.props.hintTextInput}
-          onSelectPlace ={this.props.onSelectPlace}
 
         />
 
