@@ -76,9 +76,11 @@ class PlacesAutocomplete extends Component {
       var secondaryText = structured_formatting.secondary_text;
       var n = secondaryText.length;
       var str = secondaryText.substring(0, n - 10);
+      var addressPlace = structured_formatting.main_text + " " + str;
       return ({
         mainText: structured_formatting.main_text,
         secondaryText: str,
+        address: addressPlace
       });
     }
 
@@ -126,10 +128,13 @@ class PlacesAutocomplete extends Component {
       e.preventDefault();
     }
     this.clearSuggestions();
-    this.handleSelect(address, placeId);
+    var strAddress = address.substring(0, address.length - 10);
+    this.handleSelect(strAddress, placeId);
+   
+    this.props.onSelectPlace(strAddress, placeId);
 
     this.setState({ 
-      userInputValue: address,
+      userInputValue: strAddress,
       idAddress:  placeId
     });
   }
@@ -164,7 +169,7 @@ class PlacesAutocomplete extends Component {
     } else {
       this.selectAddress(activeItem.suggestion, activeItem.placeId);
     };
-    alert(activeItem.placeId);
+
   }
 
   handleEnterKeyWithoutActiveItem() {
@@ -381,8 +386,8 @@ class PlacesAutocomplete extends Component {
             role="listbox"
             id="PlacesAutocomplete__autocomplete-container"
             style={this.inlineStyleFor('autocompleteContainer')}
-            className={this.classNameFor('autocompleteContainer')}
-          >
+            className={this.classNameFor('autocompleteContainer')}>
+
             {autocompleteItems.map((p, idx) => {
               /* eslint-disable indent */
               const style = p.active

@@ -6,10 +6,11 @@ import PlacesAutocomplete from '../custom/PlacesAutocomplete'
 
 const renderSuggestion = ({ formattedSuggestion }) => (
   <div className="Demo__suggestion-item-bottom">
-    <i className="zmdi zmdi-pin" style={{ marginRight: 10, height: '100%', display: 'inline' }}></i>
-    <div style={{ height: '100%', display: 'inline' }}>
-      <strong>{formattedSuggestion.mainText}</strong>{' '}
-      <small className="text-muted">{console.log(formattedSuggestion)}</small>
+    <div style={{ height: '100%', display: 'inline',  color: "#979797" }}>
+      <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis', fontSize: '13px' }}>
+        <i className="zmdi zmdi-pin" style={{ marginRight: 10, height: '100%', display: 'inline', color: "#979797", fontSize: '15px' }}></i>
+        {formattedSuggestion.address}
+      </div>
     </div>
   </div>
 );
@@ -32,15 +33,15 @@ const cssClasses = {
   autocompleteContainer: 'Demo__autocomplete-container-bottom',
 };
 
-const shouldFetchSuggestions = ({ value }) => value.length > 2;
+const shouldFetchSuggestions = ({ value }) => value.length >= 2;
 
 const onError = (status, clearSuggestions) => {
-  /* eslint-disable no-console */
+
   console.log(
     'Error happened while fetching suggestions from Google Maps API',
     status
   );
-  /* eslint-enable no-console */
+
   clearSuggestions();
 };
 
@@ -51,11 +52,12 @@ class InputPlaceBottom extends Component {
       address: '',
       geocodeResults: null,
       loading: false,
-      idPlace: 0
+      idPlace: ""
     };
 
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
   }
 
   handleSelect(address, idPlace) {
@@ -127,7 +129,7 @@ class InputPlaceBottom extends Component {
     };
 
     return (
-      <div className="m">
+      <div className="input_place">
         <PlacesAutocomplete
           renderSuggestion={renderSuggestion}
           renderFooter={renderFooter}
@@ -138,6 +140,7 @@ class InputPlaceBottom extends Component {
           onError={onError}
           shouldFetchSuggestions={shouldFetchSuggestions}
           hintTextInput={this.props.hintTextInput}
+          onSelectPlace={this.props.onSelectPlace}
 
         />
 

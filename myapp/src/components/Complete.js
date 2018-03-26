@@ -10,7 +10,6 @@ import ic_back from '../images/ic_back_1x.png';
 import ic_done from '../images/ic_done.png';
 import icon_complete from '../images/ic_complete.png';
 
-
 class ScreenComplete extends Component {
     render() {
         return (

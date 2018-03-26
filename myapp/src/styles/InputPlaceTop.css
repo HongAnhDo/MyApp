@@ -16,10 +16,11 @@ input {
   margin-right: 8px;
 }
 .Demo__autocomplete-container {
-  width: 125%;
+  width: 120%;
   position: relative;
   border-style:hidden;
-  margin-top: 115px;
+  margin-top: 113px;
+  padding-top: 5px;
 }
 .Demo__search-input {
   border-style:hidden;
@@ -29,8 +30,7 @@ input {
 }
 .Demo__suggestion-item {
   text-align: left;
-  padding: 2px;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 0.2px solid #CCC;
   border-bottom-width: 70%;
   margin-left: 2%;
 
@@ -42,9 +42,9 @@ input {
   
 }
 .Demo__dropdown-footer-image{
- width: auto;
- height: 30px;
- margin-right: 10px;
+  width: auto;
+  height: 15px;
+  margin-right: 10px;
 }
 .form-group {
   position: relative;

@@ -4,7 +4,7 @@ input {
   margin: 0;
   padding: 0;
   position: absolute;
-  width: 80%;
+  width: 90%;
 }
 .body, #root, .page-wrapper {
   height: 100%;
@@ -20,7 +20,8 @@ input {
   width: 125%;
   border-style:hidden;
   position: relative;
-  margin-top: 74px;
+  margin-top: 72px;
+  padding-top: 5px;
 }
 
 .Demo__search-input {
@@ -32,11 +33,10 @@ input {
 
 .Demo__suggestion-item-bottom {
   text-align: left;
-  padding: 2px;
+  padding: 1px;
   border-bottom: 1px solid #CCC;
   border-bottom-width: 70%;
   margin-left: 2%;
-
 }
 .Demo__dropdown-footer {
   display: block;
@@ -46,7 +46,7 @@ input {
 }
 .Demo__dropdown-footer-image{
  width: auto;
- height: 30px;
+ height: 20px;
  margin-right: 10px;
 
 }
