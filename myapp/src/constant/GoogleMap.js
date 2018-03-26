@@ -3,63 +3,57 @@ import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { GOOGLE_JSON } from "./GoogleJson"
 import ReactDOM from 'react-dom';
+import ic_person from '../images/ic_person.png'
+import '../styles/GoogleMap.css'
+/*global google*/
+const heightView = window.innerHeight - 135;
 
-const heightView = window.innerHeight-135;
 const MyMapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100px` }} />,
-    containerElement: <div style={{ height: heightView +'px' }} />,
-    mapElement: <div style={{height: heightView +'px'  }} />,
+    containerElement: <div style={{ position: 'relative', height: heightView + 'px', textAlign: 'center', zIndex: '1' }} />,
+    mapElement: <div style={{ height: heightView + 'px' }} />,
 
   }),
   lifecycle({
+
     componentWillMount() {
+      const refs = {}
+
+      this.setState({
+        bounds: null,
+        center: {
+          lat: 21.017548, lng: 105.8492746
+        },
+        markers: [],
+        onMapMounted: ref => {
+          refs.map = ref;
+          this.setState({
+            center: refs.map.getCenter(),
+
+          })
+        },
+
+      })
 
     },
+    
   }),
   withScriptjs,
   withGoogleMap
 )((props) =>
-  <GoogleMap
-    defaultZoom={16}
-    defaultCenter={{ lat: 21.017548, lng: 105.8492746 }}
-    defaultOptions={{ styles: GOOGLE_JSON }}
+  <div className = "map" >
+    <GoogleMap
+      defaultZoom={16}
+      defaultCenter={{ lat: 21.017548, lng: 105.8492746 }}
+      defaultOptions={{ styles: GOOGLE_JSON }}
+      ref={props.onMapMounted}
+      center={props.center}>
+    </GoogleMap>
 
-  >
-    <Marker position={{ lat: 21.0136266, lng: 105.8466552 }} />
-  </GoogleMap>
+  </div>
+
 )
-
-class MyFancyComponent extends React.PureComponent {
-  state = {
-    isMarkerShown: true,
-  }
-
-  componentDidMount() {
-    this.delayedShowMarker()
-  }
-
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true })
-    }, 3000)
-  }
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
-
-  render() {
-    return (
-      <MyMapComponent
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-      />
-    )
-  }
-}
-
 
 export default MyMapComponent;
